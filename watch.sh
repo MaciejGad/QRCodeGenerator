@@ -6,7 +6,7 @@
 WATCH_FOLDER="CreateQR/"
 
 # Path to the script that should run after detecting a change
-SCRIPT_TO_RUN="qr.sh"
+SCRIPT_TO_RUN="qr_from_webloc.sh"
 
 # *** End *** #
 
@@ -39,8 +39,5 @@ do
         continue
     fi
     echo "New file: $event"
-    url=$($PLIST_BUDDY -c "Print :URL" "$event" 2>/dev/null)
-    echo "URL: $url"
-    sh "$SCRIPT_DIR/$SCRIPT_TO_RUN" $url 
-    rm "$event"
+    sh "$SCRIPT_DIR/$SCRIPT_TO_RUN" "$event"
 done
